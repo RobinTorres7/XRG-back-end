@@ -5,6 +5,6 @@ const multer = require ('multer');
 
 const upload = multer();
 
-router.put("/updatePhotoProfile",upload.any(),updatePhotoProfile);
+router.post("/updatePhotoProfile",upload.single('photo'),updatePhotoProfile);
 
 module.exports = router;
