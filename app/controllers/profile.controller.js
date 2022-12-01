@@ -1,5 +1,5 @@
 // const multer = require ('multer');
-const updatePhotoProfile = require('../uti/files/uploadfiles')
+const uploadFromBuffer = require('../uti/files/uploadfiles')
 
 const updatePhotoProfile = async (req,res)=>{
     console.log('api profile works');
