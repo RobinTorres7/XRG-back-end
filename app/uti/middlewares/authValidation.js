@@ -10,9 +10,10 @@ if (!token){
 };
 try {
     
-    jwt.verify(token, config.SECRET_KEY);
+    const decoded = jwt.verify(token, config.SECRET_KEY);
     console.log("verificando");
 req.user =decoded
+
 }
 catch(err){
     return res.status(401).send("invalid token");
