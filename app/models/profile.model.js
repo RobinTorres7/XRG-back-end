@@ -7,6 +7,7 @@ const profileSchema = new Schema({
     idAccount: {
         type: schema.objectId,
         ref: "Account",
+        required: true,
 
     },
     phone: {
