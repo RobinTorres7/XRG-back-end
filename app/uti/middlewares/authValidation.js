@@ -21,4 +21,4 @@ catch(err){
 }
 return next();
 }
-module.exports = {authValidation}
+module.exports = {authValidation,};

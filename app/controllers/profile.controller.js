@@ -33,6 +33,26 @@ const updatePhotoProfile = async (req, res) => {
             message:error,
         })
     };
+};
+const getProfile =async (req,res)=>{
+    try {
+        const profile = await Profile.findOne({idAccount: req.user.id})
+    if(!profile){
+        return res.status(404).json({
+            ok:false,
+            message:"Profile don't search"
+        })
+    }
+    res.status(200).json({
+        ok:true,
+        data:profile,
+    });
+    }catch (error ){
+        res.status(400).json ({
+            ok:false,
+            message:error,
+        })
+    }
 }
 
-        module.exports = updatePhotoProfile;
+        module.exports = {updatePhotoProfile,getProfile};
