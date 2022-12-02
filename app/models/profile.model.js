@@ -1,24 +1,24 @@
-//rutas profiles = titulo, distancia, desnivel, pendiente, deporte.
+
 const mongoose = require('mongoose');
-const {Schema} = require("./accounts.model");
 const Schema = mongoose.Schema;
 
 const profileSchema = new Schema({
     idAccount: {
-        type: schema.objectId,
+        type: Schema.ObjectId,
         ref: "Account",
         required: true,
+        unique: true,
 
     },
     phone: {
-        type: string,
+        type: String,
 
     },
     location:{
-    type:srting, 
+        type: String, 
     },
     photoProfile:{
-        type:string,
+        type:String,
         
 
     },
