@@ -12,7 +12,7 @@ try {
     
     const decoded = jwt.verify(token, config.SECRET_KEY);
     console.log("verificando");
-req.user =decoded
+req.user = decoded
 
 }
 catch(err){
