@@ -1,6 +1,6 @@
 // const multer = require ('multer');
 const uploadFromBuffer = require('../uti/files/uploadfiles');
-const profile = require('../models/profile.model');
+const Profile = require('../models/profile.model');
 
 const updatePhotoProfile = async (req, res) => {
     console.log(req.file);
