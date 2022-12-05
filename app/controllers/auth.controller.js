@@ -24,7 +24,7 @@ if(isCorrectPassword && result.isActive){
     // });
    const token =  jwt.sign(
     {
-        _id:result._id,
+        id:result._id,
         fullName : result.fullName,
         email: result.email,
         role: result.role,
