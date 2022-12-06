@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const profileSchema = new Schema({
     idAccount: {
         type: Schema.ObjectId,
-        ref: "Account",
+        ref: "Accounts",
         required: true,
         unique: true,
 
@@ -22,16 +22,7 @@ const profileSchema = new Schema({
         
 
     },
-    fullName: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-
+  
 })
-const profiles = mongoose.model('Profile', profileSchema);
-module.exports = profiles;
+const profile = mongoose.model('profile', profileSchema);
+module.exports = profile;
