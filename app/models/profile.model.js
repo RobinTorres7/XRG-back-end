@@ -21,8 +21,8 @@ const profileSchema = new Schema({
         type:String,
         
 
-    },
+    } ,
   
-})
+} )
 const profile = mongoose.model('profile', profileSchema);
 module.exports = profile;
