@@ -16,9 +16,11 @@ const updatePhotoProfile = async (req, res) => {
         }
         console.log("2");
         const photoUpDated = await profile.findOneAndUpdate(
-            { idAccount: req.user.id }, {
-            photoProfile: resultUploadPhoto.url,
-        }); console.log(photoUpDated);
+            { idAccount: req.user.id },
+            {
+                photoProfile: resultUploadPhoto.url,
+            });
+        console.log(photoUpDated);
         if (!photoUpDated) {
             console.log(photoUpDated);
             console.log(req.user.id);
@@ -34,7 +36,7 @@ const updatePhotoProfile = async (req, res) => {
     } catch (error) {
         res.status(400).json({
             ok: false,
-            message: error,
+            message: error.message,
         })
     };
 };

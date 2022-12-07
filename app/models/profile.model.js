@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const profileSchema = new Schema({
     idAccount: {
         type: Schema.ObjectId,
-        ref: "Accounts",
+        ref: "Account",
         required: true,
         unique: true,
 
@@ -19,9 +19,8 @@ const profileSchema = new Schema({
     },
     photoProfile:{
         type:String,
-        
+        },
 
-    } ,
   
 } )
 const profile = mongoose.model('profile', profileSchema);
