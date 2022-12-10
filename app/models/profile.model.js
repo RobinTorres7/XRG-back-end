@@ -10,12 +10,13 @@ const profileSchema = new Schema({
         unique: true,
 
     },
-    phone: {
-        type: String,
-
+    experience: {
+        type: Number,
+        // required:true,
     },
-    location:{
-        type: String, 
+    followers:{
+        type: Number, 
+        default:0,
     },
     photoProfile:{
         type:String,

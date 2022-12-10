@@ -3,9 +3,9 @@ const uploadFromBuffer = require('../uti/files/uploadfiles');
 const profile = require('../models/profile.model');
 
 const updatePhotoProfile = async (req, res) => {
-    console.log("estoy dentro de updatePhotoProfile");
+    
     try {
-        console.log("sisas");
+        
         const resultUploadPhoto = await uploadFromBuffer(req.file);
         if (!resultUploadPhoto) {
             return res.status(400).json({
@@ -14,7 +14,7 @@ const updatePhotoProfile = async (req, res) => {
             });
 
         }
-        console.log("2");
+      
         const photoUpDated = await profile.findOneAndUpdate(
             { idAccount: req.user.id },
             {
@@ -22,9 +22,6 @@ const updatePhotoProfile = async (req, res) => {
             });
         console.log(photoUpDated);
         if (!photoUpDated) {
-            console.log(photoUpDated);
-            console.log(req.user.id);
-            console.log(resultUploadPhoto.url);
             await profile.create({
                 idAccount: req.user.id,
                 photoProfile: resultUploadPhoto.url,

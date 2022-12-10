@@ -1,31 +1,42 @@
 //rutas legandarias = titulo, distancia, desnivel, pendiente, deporte.
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const routesLegendarysSchema = new Schema({
-    routeName :{
+    routeName: {
         type: String,
-    required : true
+        required: true
     },
     distance: {
         type: Number,
         required: true
     },
-    metersClimbed :{
+    averageGrade: {
         type: Number,
         required: true,
     },
-    inclinePercentage:{
+    elevation: {
+        type: Number,
+        required: true,
+    },
+    difficulty: {
         type: String,
         required: true,
     },
-    difficulty : {
+    bestTime: {
         type: String,
         required: true,
     },
-    routeType :{
-        type : String,
-        required:true,
+    bestTimeCategory: {
+        type: String,
+        required: true
+    },
+    bestTimeUser: {
+        type: String,
+    },
+    userPosition: {
+        type: Number,
+
     }
 
 })
