@@ -39,10 +39,10 @@ const updatePhotoProfile = async (req, res) => {
 };
 
 const getProfile = async (req, res) => {
-    console.log("obteniendo perfil");
+    /* console.log("obteniendo perfil"); */
     try {
         const responseProfile = await profile.findOne({ idAccount: req.user.id })
-        console.log(req.user.id);
+        /* console.log(responseProfile.idAccount); */
         if (!responseProfile) {
             return res.status(404).json({
                 ok: false,
