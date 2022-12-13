@@ -6,7 +6,8 @@ module.exports = (app =>{
     app.use('/api/profile',require('./profile.route.js'))
     app.use('/api/strava',require('./strava.route.js'))
     app.use('/api/challenge',require('./challenge.route.js'))
-
+    app.use('/api/ad',require('./ad.route.js'))
+  
 
 
 })

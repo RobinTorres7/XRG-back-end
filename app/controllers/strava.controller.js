@@ -24,7 +24,9 @@ const updateDataStrava = (req, res) => {
                 const accesToken = await refreshToken(objectStrava.refresh_token)
                  console.log(accesToken); 
                 const getStats = await dataUserStrava(objectStrava.athlete.id, accesToken.access_token)
-                experienceMat = getStats.all_ride_totals.distance / 10;
+                experienceProvi =getStats.all_ride_totals.distance / 10000;
+                experienceMat = Math.trunc(experienceProvi); 
+                console.log(experienceMat);
                 followerStrava = objectStrava.athlete.follower;
                 console.log('experiencia',experienceMat);
                 console.log(req.user);
