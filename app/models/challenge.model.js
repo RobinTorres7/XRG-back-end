@@ -24,5 +24,5 @@ descriptionLong:{
 
 
 
-const accounts = mongoose.model('RoutesLegendarys',challengesSchema );
-module.exports = accounts;
+const challenge = mongoose.model('challenge',challengesSchema );
+module.exports = challenge ;
