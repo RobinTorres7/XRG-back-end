@@ -1,9 +1,12 @@
 const Challenge = require('../models/challenge.model');
 
 
-const readChallengeCards = (req, res) => {
-    // console.log('accounts/api works');
-    res.send('newAccount api works!')
+const readChallengeCards = async (req, res) => {
+    const result = await Challenge.find();
+   return res.status(200).json({
+    ok: true,
+    res:result
+   })
 
 }
 
