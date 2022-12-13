@@ -26,6 +26,7 @@ const updateDataStrava = (req, res) => {
                  console.log(accesToken); 
                 const getStats = await dataUserStrava(objectStrava.athlete.id, accesToken.access_token)
                 experienceProvi =getStats.all_ride_totals.distance / 10000;
+                console.log(getStats);
                 experienceMat = Math.trunc(experienceProvi); 
 
 

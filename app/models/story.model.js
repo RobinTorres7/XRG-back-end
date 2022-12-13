@@ -30,5 +30,5 @@ const storySchema = new Schema({
 
 } */);
 
-const accounts = mongoose.model('RoutesLegendarys', storySchema);
+const accounts = mongoose.model('stories', storySchema);
 module.exports = accounts;
