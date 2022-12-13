@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const routesLegendarysSchema = new Schema({
+const routesSchema = new Schema({
     routeName: {
         type: String,
         required: true
@@ -36,10 +36,12 @@ const routesLegendarysSchema = new Schema({
     },
     userPosition: {
         type: Number,
-
+    },
+    imageRoute:{
+        type:String,
     }
 
 })
 
-const accounts = mongoose.model('RoutesLegendarys', accountSchema);
+const accounts = mongoose.model('RoutesLegendarys',routesSchema );
 module.exports = accounts;
