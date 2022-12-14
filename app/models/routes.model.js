@@ -5,31 +5,44 @@ const Schema = mongoose.Schema;
 const routesSchema = new Schema({
     routeName: {
         type: String,
-        required: true
+
     },
     distance: {
         type: Number,
-        required: true
+
     },
     averageGrade: {
         type: Number,
-        required: true,
+        
     },
     elevation: {
         type: Number,
-        required: true,
+        
     },
     difficulty: {
         type: String,
-        required: true,
+        
+    },
+    bestUser: {
+        type: String,
+        
     },
     bestTime: {
         type: String,
-        required: true,
+        
+    },
+    iconBestTime: {
+        type:String
+    },
+    bestUserCategory:{
+        type:String,
     },
     bestTimeCategory: {
         type: String,
-        required: true
+
+    },
+    iconBestCategory:{
+        type:String,
     },
     bestTimeUser: {
         type: String,
@@ -39,9 +52,9 @@ const routesSchema = new Schema({
     },
     imageRoute:{
         type:String,
-    }
+    },
 
-})
+},);
 
-const accounts = mongoose.model('RoutesLegendarys',routesSchema );
+const accounts = mongoose.model('routes',routesSchema );
 module.exports = accounts;
