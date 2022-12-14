@@ -69,6 +69,13 @@ const updateDataStrava = (req, res) => {
                 console.log(getUserPrMesitasElsalto); 
 
 
+                const routesTime = {}
+                routesTime.belisarioPatios =getUserPrPatios;
+                routesTime.laVegaElVino = getUserPrVegaVino;
+                routesTime.yerbabuenaVara = getUserPrYerbabuenaVara;
+                routesTime
+
+                console.log(routesTime);
 
 
 
