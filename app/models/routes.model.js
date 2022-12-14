@@ -53,6 +53,13 @@ const routesSchema = new Schema({
     imageRoute:{
         type:String,
     },
+    idProfile: {
+        type: Schema.ObjectId,
+        ref: "profile",
+        required: false,
+        unique: true,
+
+    },
 
 },);
 

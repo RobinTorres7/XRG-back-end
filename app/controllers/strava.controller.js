@@ -19,24 +19,43 @@ const updateDataStrava = (req, res) => {
                     })
                 }
 
-                 console.log(objectStrava); 
+                 /* console.log(objectStrava);  */
                 // refreshToken(objectStrava.refresh_token);
-                // dataUserStrava();
+               
                 const accesToken = await refreshToken(objectStrava.refresh_token)
-                 console.log(accesToken); 
+                 /* console.log(accesToken);  */
+
+                 /* Obteniendo estadisticas del usuario */
                 const getStats = await dataUserStrava(objectStrava.athlete.id, accesToken.access_token)
                 experienceProvi =getStats.all_ride_totals.distance / 10000;
-                console.log(getStats);
+               
+                /* console.log(getStats); */
+               
                 experienceMat = Math.trunc(experienceProvi); 
 
+
+                /* Validación Disciplina */
+                getRecentMovingTime = getStats.recent_ride_totals.moving_time/3600
+                console.log(getRecentMovingTime);
+                const userDiscipline = discipline (getRecentMovingTime);
+               /*  console.log(userDiscipline); */
+               
 
                 /*Obteniendo PR de Rutas legensarias*/ 
                 /* Segmento Belisario Patios */
                 const belisarioPatiosId = 3178893
                 const getPatiosSegment = await dataRouteUserStrava(belisarioPatiosId, accesToken.access_token)
                 const patiosPrSeconds = getPatiosSegment.athlete_segment_stats.pr_elapsed_time
+                
                 const getUserPrPatios =  getPrSegment(patiosPrSeconds)
-                console.log(getUserPrPatios);
+                /* console.log(getUserPrPatios); */
+
+                /* Performance Belisario Patios */
+                const bestTimePatiosBelisario = 876
+                const performancePatiosTimeUserBest = Math.round( 95 - (((patiosPrSeconds - bestTimePatiosBelisario)/60) *2) )
+                /* console.log(performancePatiosTimeUserBest); */
+                const performanceUser = []
+                performanceUser.push(performancePatiosTimeUserBest,performancePatiosTimeUserBest);
 
 
                 /* Segmento La Vega el Vino */
@@ -44,14 +63,14 @@ const updateDataStrava = (req, res) => {
                 const getVegaVinoSegment = await dataRouteUserStrava(laVegaElVinoId, accesToken.access_token)
                 const vegaVinoPrSeconds = getVegaVinoSegment.athlete_segment_stats.pr_elapsed_time  
                 const getUserPrVegaVino =  getPrSegment(vegaVinoPrSeconds) 
-                console.log(getUserPrVegaVino); 
+              /*   console.log(getUserPrVegaVino); */ 
                 
                 /* Segmento Yerbabuena */
                 const yerbabuenaVaraId = 2489686
                 const getYerbabuenaVaraSegment = await dataRouteUserStrava(yerbabuenaVaraId, accesToken.access_token)
                 const yerbabuenaVaraPrSeconds = getYerbabuenaVaraSegment.athlete_segment_stats.pr_elapsed_time  
                 const getUserPrYerbabuenaVara =  getPrSegment(yerbabuenaVaraPrSeconds)
-                console.log(getUserPrYerbabuenaVara); 
+                /* console.log(getUserPrYerbabuenaVara);  */
                 
                 /* Crono autopista */
 
@@ -59,26 +78,24 @@ const updateDataStrava = (req, res) => {
                 const getCronoAutopistaSegment = await dataRouteUserStrava(cronoAutopistaId, accesToken.access_token)
                 const cronoAutopistaPrSeconds = getCronoAutopistaSegment.athlete_segment_stats.pr_elapsed_time  
                 const getUserPrCronoAutopista =  getPrSegment(cronoAutopistaPrSeconds)
-                console.log(getUserPrCronoAutopista); 
+                /* console.log(getUserPrCronoAutopista);  */
 
                 /* Mesitas El Salto */
                 const mesitasElsaltoId = 1334595
                 const getMesitasElsaltoaSegment = await dataRouteUserStrava(mesitasElsaltoId, accesToken.access_token)
                 const mesitasElsaltoPrSeconds = getMesitasElsaltoaSegment.athlete_segment_stats.pr_elapsed_time  
                 const getUserPrMesitasElsalto =  getPrSegment(mesitasElsaltoPrSeconds)
-                console.log(getUserPrMesitasElsalto); 
+                /* console.log(getUserPrMesitasElsalto); */ 
 
 
-                const routesTime = {}
-                routesTime.belisarioPatios =getUserPrPatios;
-                routesTime.laVegaElVino = getUserPrVegaVino;
-                routesTime.yerbabuenaVara = getUserPrYerbabuenaVara;
-                routesTime
+                const routesTimeUser = []
+                routesTimeUser.push(getUserPrPatios,getUserPrVegaVino, getUserPrYerbabuenaVara, getUserPrCronoAutopista, getUserPrMesitasElsalto);
+                
 
-                console.log(routesTime);
+                /* console.log(routesTimeUser); */
 
 
-
+                
 
 
 
@@ -99,7 +116,10 @@ const updateDataStrava = (req, res) => {
                     {
                         experience: experienceMat,
                         followers: followerStrava,
-                     }
+                        routesTime:routesTimeUser,
+                        discipline:userDiscipline,
+                        performance:performanceUser,
+                        },
                 );
                 /*  console.log(statsAthleteUpDated); */
                 if (!statsAthleteUpDated) {
@@ -246,6 +266,23 @@ const getPrSegment = (segmentPrSeconds)=>{
     
     return segmentPrUser
     
+}
+
+const discipline = (movingTimeUser)=>{
+    if (movingTimeUser>20){
+        disciplineUser= "cien"  
+    } else if (movingTimeUser<20 && movingTimeUser>15) {
+        disciplineUser= "ochocinco" 
+    } else if (movingTimeUser<15 && movingTimeUser>10){
+        disciplineUser= "setenta" 
+    } else if (movingTimeUser<10 && movingTimeUser>5){
+        disciplineUser= "cincuenta" 
+    } else {
+        disciplineUser= "doscinco"
+    }
+    return  disciplineUser
+
+
 }
 
 
