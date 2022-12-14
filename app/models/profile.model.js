@@ -21,6 +21,10 @@ const profileSchema = new Schema({
     photoProfile:{
         type:String,
         },
+    routesTime:{
+        type:String,
+        default:"0"
+    },
 
   
 } )

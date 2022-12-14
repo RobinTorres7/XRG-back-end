@@ -8,6 +8,8 @@ module.exports = (app =>{
     app.use('/api/strava',require('./strava.route.js'))
     app.use('/api/challenge',require('./challenge.route.js'))
     app.use('/api/ad',require('./ad.route.js'))
+    app.use('/api/story',require('./story.route.js'))
+    app.use('/api/route',require('./route.route.js'))
   
 
 

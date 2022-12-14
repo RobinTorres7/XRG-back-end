@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const StorySchema = new Schema({
-    idAccount: {
+const storySchema = new Schema({
+   /*  idAccount: {
         type: Schema.ObjectId,
         ref: "Account",
-        required: true,
+        required: false,
         unique: true,
-    },
+    }, */
     imageStory: {
         type: String
     },
@@ -17,20 +17,18 @@ const StorySchema = new Schema({
     descriptionStory: {
         type: String,
     },
-    DateStory: {
-        type: Date,
-    },
     isActive: {
         type:Boolean,
         default:true,
     
     },
-    idTypePublication:{
-        
-    }
+    /* idTypePublication:{
+        type: String,
+    }, */
+},
+/* {timestamps:true,
 
+} */);
 
-})
-
-const accounts = mongoose.model('RoutesLegendarys', StorySchema);
+const accounts = mongoose.model('stories', storySchema);
 module.exports = accounts;
