@@ -52,10 +52,9 @@ const updateDataStrava = (req, res) => {
 
                 /* Performance Belisario Patios */
                 const bestTimePatiosBelisario = 876
-                const performancePatiosTimeUserBest = Math.round( 95 - (((patiosPrSeconds - bestTimePatiosBelisario)/60) *2) )
+                const performancePatiosTimeUserBest = Math.round( 95 - (((patiosPrSeconds - bestTimePatiosBelisario)/60) *2.5) )
                 /* console.log(performancePatiosTimeUserBest); */
-                const performanceUser = []
-                performanceUser.push(performancePatiosTimeUserBest,performancePatiosTimeUserBest);
+                
 
 
                 /* Segmento La Vega el Vino */
@@ -64,6 +63,13 @@ const updateDataStrava = (req, res) => {
                 const vegaVinoPrSeconds = getVegaVinoSegment.athlete_segment_stats.pr_elapsed_time  
                 const getUserPrVegaVino =  getPrSegment(vegaVinoPrSeconds) 
               /*   console.log(getUserPrVegaVino); */ 
+
+              /* Performance La Vega El Vino */
+              const bestTimeVegaVino = 4320
+              const performanceVegaVinoTimeUserBest = Math.round( 95 - (((vegaVinoPrSeconds - bestTimeVegaVino)/60) *0.7) )
+              /* console.log(performancePatiosTimeUserBest); */
+              const performanceUser = []
+             
                 
                 /* Segmento Yerbabuena */
                 const yerbabuenaVaraId = 2489686
@@ -71,6 +77,12 @@ const updateDataStrava = (req, res) => {
                 const yerbabuenaVaraPrSeconds = getYerbabuenaVaraSegment.athlete_segment_stats.pr_elapsed_time  
                 const getUserPrYerbabuenaVara =  getPrSegment(yerbabuenaVaraPrSeconds)
                 /* console.log(getUserPrYerbabuenaVara);  */
+
+                /* Performance Yerbabuena */
+                const bestTimeYerbabuena = 660
+                const performanceYerbabuenaTimeUserBest = Math.round( 95 - (((yerbabuenaVaraPrSeconds - bestTimeYerbabuena)/60) *5) )
+                console.log(performanceYerbabuenaTimeUserBest);
+           
                 
                 /* Crono autopista */
 
@@ -80,6 +92,11 @@ const updateDataStrava = (req, res) => {
                 const getUserPrCronoAutopista =  getPrSegment(cronoAutopistaPrSeconds)
                 /* console.log(getUserPrCronoAutopista);  */
 
+                /* Performance Crono Regreso */
+                const bestTimeAutopista = 510
+                const performanceCronoTimeUserBest = Math.round( 95 - (((cronoAutopistaPrSeconds - bestTimeAutopista)/60) *8) )
+               
+
                 /* Mesitas El Salto */
                 const mesitasElsaltoId = 1334595
                 const getMesitasElsaltoaSegment = await dataRouteUserStrava(mesitasElsaltoId, accesToken.access_token)
@@ -87,9 +104,14 @@ const updateDataStrava = (req, res) => {
                 const getUserPrMesitasElsalto =  getPrSegment(mesitasElsaltoPrSeconds)
                 /* console.log(getUserPrMesitasElsalto); */ 
 
+                /* Performance Mesitas El Salto */
+                const bestTimeMesitasSalto = 2364
+                const performanceMesitasSaltoTimeUserBest = Math.round( 95 - (((mesitasElsaltoPrSeconds - bestTimeMesitasSalto)/60) *0.5) )
+                performanceUser.push(performanceVegaVinoTimeUserBest,performancePatiosTimeUserBest,performanceCronoTimeUserBest, performanceMesitasSaltoTimeUserBest,performanceYerbabuenaTimeUserBest);
+
 
                 const routesTimeUser = []
-                routesTimeUser.push(getUserPrPatios,getUserPrVegaVino, getUserPrYerbabuenaVara, getUserPrCronoAutopista, getUserPrMesitasElsalto);
+                routesTimeUser.push(getUserPrMesitasElsalto,getUserPrVegaVino,getUserPrPatios, getUserPrYerbabuenaVara, getUserPrCronoAutopista, );
                 
 
                 /* console.log(routesTimeUser); */
