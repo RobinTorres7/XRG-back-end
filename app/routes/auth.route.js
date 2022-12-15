@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const { googleAccount } = require('../controllers/account.controller');
 const login = require('../controllers/auth.controller')
 const { authValidation } = require('../uti/middlewares/authValidation');
 const router = express.Router();
@@ -9,4 +10,6 @@ router.post("/authValidation",authValidation, (req,res)=>{
         ok: true,
     })
 })
+router.post("/googleLogin",googleAccount,login);
+
 module.exports = router;

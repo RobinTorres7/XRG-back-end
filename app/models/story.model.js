@@ -22,6 +22,9 @@ const storySchema = new Schema({
         default:true,
     
     },
+    profileName:{
+    type:String
+    }
     /* idTypePublication:{
         type: String,
     }, */
