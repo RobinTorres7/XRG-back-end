@@ -29,7 +29,7 @@ const updateDataStrava = (req, res) => {
                 const getStats = await dataUserStrava(objectStrava.athlete.id, accesToken.access_token)
                 experienceProvi =getStats.all_ride_totals.distance / 10000;
                
-                /* console.log(getStats); */
+                console.log(getStats);
                
                 experienceMat = Math.trunc(experienceProvi); 
 
@@ -52,7 +52,7 @@ const updateDataStrava = (req, res) => {
 
                 /* Performance Belisario Patios */
                 const bestTimePatiosBelisario = 876
-                const performancePatiosTimeUserBest = Math.round( 95 - (((patiosPrSeconds - bestTimePatiosBelisario)/60) *2.5) )
+                const performancePatiosTimeUserBest = Math.round( 95 - (((patiosPrSeconds - bestTimePatiosBelisario)/60) *5) )
                 /* console.log(performancePatiosTimeUserBest); */
                 
 
@@ -66,7 +66,7 @@ const updateDataStrava = (req, res) => {
 
               /* Performance La Vega El Vino */
               const bestTimeVegaVino = 4320
-              const performanceVegaVinoTimeUserBest = Math.round( 95 - (((vegaVinoPrSeconds - bestTimeVegaVino)/60) *0.7) )
+              const performanceVegaVinoTimeUserBest = Math.round( 95 - (((vegaVinoPrSeconds - bestTimeVegaVino)/60) *1.1) )
               /* console.log(performancePatiosTimeUserBest); */
               const performanceUser = []
              
@@ -80,7 +80,7 @@ const updateDataStrava = (req, res) => {
 
                 /* Performance Yerbabuena */
                 const bestTimeYerbabuena = 660
-                const performanceYerbabuenaTimeUserBest = Math.round( 95 - (((yerbabuenaVaraPrSeconds - bestTimeYerbabuena)/60) *5) )
+                const performanceYerbabuenaTimeUserBest = Math.round( 95 - (((yerbabuenaVaraPrSeconds - bestTimeYerbabuena)/60) *5.5) )
                 console.log(performanceYerbabuenaTimeUserBest);
            
                 
@@ -94,7 +94,7 @@ const updateDataStrava = (req, res) => {
 
                 /* Performance Crono Regreso */
                 const bestTimeAutopista = 510
-                const performanceCronoTimeUserBest = Math.round( 95 - (((cronoAutopistaPrSeconds - bestTimeAutopista)/60) *8) )
+                const performanceCronoTimeUserBest = Math.round( 95 - (((cronoAutopistaPrSeconds - bestTimeAutopista)/60) *10) )
                
 
                 /* Mesitas El Salto */
@@ -106,7 +106,7 @@ const updateDataStrava = (req, res) => {
 
                 /* Performance Mesitas El Salto */
                 const bestTimeMesitasSalto = 2364
-                const performanceMesitasSaltoTimeUserBest = Math.round( 95 - (((mesitasElsaltoPrSeconds - bestTimeMesitasSalto)/60) *0.5) )
+                const performanceMesitasSaltoTimeUserBest = Math.round( 95 - (((mesitasElsaltoPrSeconds - bestTimeMesitasSalto)/60) *1) )
                 performanceUser.push(performanceVegaVinoTimeUserBest,performancePatiosTimeUserBest,performanceCronoTimeUserBest, performanceMesitasSaltoTimeUserBest,performanceYerbabuenaTimeUserBest);
 
 
