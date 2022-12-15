@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
 const login = async (req,res )=>{
-    // console.log("into");
+    console.log("into login controller");
     const user = req.body;
     const result = await Account.findOne({email:user.email});
    if (!result){

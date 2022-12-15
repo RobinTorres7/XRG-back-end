@@ -23,7 +23,7 @@ const googleAccount = async (req, res, next) => {
                 { idAccount: account._id },
                 { photoProfile: user.photoUrl }
             );
-            return (next);
+            return next();
         }
         const passwordHash = await bcrypt.hash(user.password, saltRounds)
         const newAccount = await Account.create({
